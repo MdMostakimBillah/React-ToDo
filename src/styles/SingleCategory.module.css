@@ -1,0 +1,33 @@
+.listnumbers {
+  transition: 0.3s linear;
+  margin-bottom: 10px;
+}
+
+.listnumbers a {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  /* margin-bottom: 10px; */
+  cursor: pointer;
+}
+.listnumbers .bubble {
+  width: 12px;
+  height: 12px;
+  background-color: #d6ed47;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.listnumbers .listname {
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+.listnumbers .listname,
+.listnumbers .listname span {
+  transition: 0.2s;
+}
+.listnumbers:hover .listname {
+  background-color: #a18aff;
+}
+.listnumbers:hover .listname span {
+  color: #ffffff;
+}

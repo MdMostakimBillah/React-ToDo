@@ -1,0 +1,26 @@
+.top_account {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.top_account .logo {
+  width: 60px;
+  height: auto;
+  margin-right: 20px;
+}
+.top_account .logo img {
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid #27272786;
+}
+.use_name {
+  color: #a18aff;
+}
+/* line  */
+.dashline {
+  width: 100%;
+  height: 3px;
+  background-color: #a18aff;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}

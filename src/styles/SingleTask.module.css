@@ -1,0 +1,52 @@
+/* single task  */
+.my_single_task {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 7px;
+}
+.icon_editing_task {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.check_box_signle_task {
+  width: 22px;
+  height: 22px;
+}
+.check_box_signle_task input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #a18aff;
+  border-radius: 50%;
+  padding: 2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.check_box_signle_task input::after {
+  font-family: "Material Icons";
+  content: "\e5ca";
+  position: absolute;
+  font-size: 15px;
+  font-weight: 700;
+  color: #a18aff;
+  display: none;
+  cursor: pointer;
+}
+
+.check_box_signle_task input:checked:after {
+  display: block;
+}
+.icon_editing_task .Edit_Delete {
+  color: #a18aff;
+  margin-left: 12px;
+  cursor: pointer;
+  user-select: none;
+}

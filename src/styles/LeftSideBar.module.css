@@ -1,0 +1,8 @@
+.side_list {
+  background-color: #ffffff;
+  height: calc(100vh - 20px);
+  width: 300px;
+  max-width: 300px;
+  border-radius: 15px;
+  padding: 25px;
+}
