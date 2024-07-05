@@ -1,8 +1,12 @@
-# React + Vite
+# ToDo WEB APP v1.0.0
+- HTML Design part is done. Design look like this 
+![Screenshot from 2024-07-05 20-55-14](https://github.com/MdMostakimBillah/React-ToDo/assets/116565221/74bfedd6-70bb-4212-a12c-45af39b45506)
+- At first my Task is just it,
+- [ ] Input field create
+- [ ] Add All the Input Data in a List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### REACT SKILL FOR THIS PROJECT
+- [X] State management
+- [X] Form Handling
+- [X] Conditional Rendaring
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
