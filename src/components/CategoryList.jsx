@@ -1,5 +1,5 @@
 import classes from "../styles/CategoryList.module.css";
-import AddButton from "./AddButton";
+// import AddButton from "./AddButton";
 import SingleCategory from "./SingleCategory";
 function CategoryList() {
   return (
@@ -9,7 +9,7 @@ function CategoryList() {
         <SingleCategory value="Freelancing" />
         <SingleCategory value="Collage" />
         <SingleCategory value="Work" />
-        <AddButton />
+        {/* <AddButton /> */}
       </div>
     </>
   );

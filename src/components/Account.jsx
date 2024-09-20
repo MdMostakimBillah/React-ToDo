@@ -11,7 +11,7 @@ function Account() {
           </div>
           <div className={classes.account_title}>
             <h3>Do-it</h3>
-            <h3 className={classes.use_name}>Mostakim Billah</h3>
+            {/* <h3 className={classes.use_name}>Mostakim Billah</h3> */}
           </div>
         </div>
         {/* <!-- line  --> */}
