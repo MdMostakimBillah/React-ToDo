@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "../styles/AddSector.module.css";
-const AddSector = () => {
+const AddSector = ({ handleSectionValue }) => {
   const [addSector, setAddSector] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [storeData, setStoreData] = useState([]);
@@ -25,9 +25,6 @@ const AddSector = () => {
     setStoreData([...storeData, inputValue]);
     setInputValue("");
   };
-
-  console.log(storeData);
-
   return (
     <>
       <div className={classes.addTaskTitle} onClick={SectorAddHandler}>

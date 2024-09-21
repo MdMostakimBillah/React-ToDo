@@ -1,6 +1,13 @@
+import { useState } from "react";
 import classes from "../styles/Navigation.module.css";
 import AddSector from "./AddSector";
 const Navigation = () => {
+  const [section, setSection] = useState([]);
+  const handleSectionValue = (value) => {
+    setSection(value);
+    console.log(section);
+  };
+
   return (
     <div className={classes.navigationWraper}>
       <div className={classes.navTitle}>
@@ -9,7 +16,7 @@ const Navigation = () => {
       </div>
       <div className={classes.activeAction}></div>
 
-      <AddSector />
+      <AddSector handleSectionValue={handleSectionValue} />
     </div>
   );
 };
