@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "../styles/AddSector.module.css";
 const AddSector = ({ handleSectionValue }) => {
   const [addSector, setAddSector] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [storeData, setStoreData] = useState([]);
+  const [storeData, setStoreData] = useState([]); // array store here
+
+  //stop re-rendering
+  useEffect(() => {
+    if (storeData.length > 0) {
+      handleSectionValue(storeData);
+    }
+  }, [handleSectionValue, storeData]);
 
   //show input box
   const SectorAddHandler = () => {
@@ -19,11 +26,11 @@ const AddSector = ({ handleSectionValue }) => {
     setInputValue(e.target.value);
   };
 
-  //for submition
+  //form submition
   const SubmitHandle = (e) => {
     e.preventDefault();
-    setStoreData([...storeData, inputValue]);
-    setInputValue("");
+    setStoreData((prevData) => [...prevData, inputValue]);
+    setInputValue(""); // Clear input after submission
   };
   return (
     <>

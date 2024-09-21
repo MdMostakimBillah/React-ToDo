@@ -8,3 +8,9 @@
 #root {
   padding: 7px;
 }
+li {
+  list-style: none;
+}
+ul {
+  margin-left: 0;
+}
