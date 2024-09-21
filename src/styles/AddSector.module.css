@@ -1,0 +1,69 @@
+.addTaskTitle {
+  padding: 10px 10px;
+}
+.addTaskTitle p {
+  font-size: 15px;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: #a18aff;
+  color: #fff;
+  text-align: center;
+  transition: 0.3s ease;
+}
+.addTaskTitle p:hover {
+  cursor: pointer;
+}
+.addTaskTitleField {
+  position: absolute;
+  top: 5px;
+  left: 20%;
+  width: 250px;
+  transform: translateY(-150px);
+  transition: 0.2s ease-in;
+}
+.show {
+  transform: translateY(0);
+}
+.addTaskTitleField form {
+  width: 100%;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.addTaskTitleField form input {
+  outline: none;
+  border: 2px solid #747474;
+  padding: 7px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.addTaskTitleField form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addSector,
+.cancel {
+  padding: 7px 20px;
+  outline: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cancel {
+  background-color: rgb(173, 173, 173);
+  color: #0f0f0f;
+}
+.addSector {
+  background-color: #a18aff;
+  color: #fff;
+}

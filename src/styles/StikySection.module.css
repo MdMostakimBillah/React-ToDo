@@ -1,6 +1,0 @@
-.sticky_div {
-  width: calc(100% - 300px);
-  background-color: transparent;
-  position: fixed;
-  padding: 20px 10px 0 10px;
-}

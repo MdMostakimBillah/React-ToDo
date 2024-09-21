@@ -1,6 +1,0 @@
-.task_container {
-  width: calc(100% - 300px);
-  height: calc(100vh - 20px);
-  background-color: #a18aff;
-  border-radius: 15px;
-}

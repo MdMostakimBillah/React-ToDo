@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  height: calc(100dvh - 14px);
+  background-color: #a18aff;
+  padding: 12px;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+  position: relative;
+}

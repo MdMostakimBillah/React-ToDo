@@ -1,0 +1,38 @@
+.navigationWraper {
+  width: 250px;
+  height: calc(100dvh - 60px);
+  background-color: #fff;
+  border-radius: 7px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.navTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+}
+.navTitle h3 {
+  color: rgb(29, 29, 29);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px;
+}
+.activeAction {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(194, 194, 194);
+  position: relative;
+}
+.activeAction::after {
+  position: absolute;
+  content: "";
+  width: 80px;
+  height: 100%;
+  background-color: #a18aff;
+  left: 0;
+  top: 0;
+}
+
+
