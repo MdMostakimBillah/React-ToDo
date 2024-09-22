@@ -1,0 +1,77 @@
+.addTaskTitle {
+  padding: 10px 10px;
+}
+.addTaskTitle p {
+  font-size: 15px;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: #a18aff;
+  color: #fff;
+  text-align: center;
+  transition: 0.3s ease;
+}
+.addTaskTitle p:hover {
+  cursor: pointer;
+}
+.addTaskTitleField {
+  position: absolute;
+  top: 5px;
+  width: 300px;
+  transform: translateY(-250px);
+  transition: 0.3s ease-in;
+  box-shadow: 0px 2px 5px #cccccc;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.show {
+  transform: translateY(0);
+}
+.addTaskTitleField form {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.addTaskTitleField form input {
+  outline: none;
+  border: 2px solid #a7a7a7;
+  padding: 7px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 100%;
+}
+.addTaskTitleInputWraper {
+  background-color: #ebebeb;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+.addTaskTitleField form div.buttonWraper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px;
+}
+.addSector,
+.cancel {
+  padding: 7px 20px;
+  outline: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cancel {
+  background-color: rgb(173, 173, 173);
+  color: #0f0f0f;
+}
+.addSector {
+  background-color: #a18aff;
+  color: #fff;
+}
