@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classes from "../styles/AddSector.module.css";
 const AddSector = ({ handleSectionValue }) => {
   const [addSector, setAddSector] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [storeData, setStoreData] = useState([]); // array store here
-
+  const inputRef = useRef(null);
   //keyboard shortcut key
   useEffect(() => {
     const handleKeyPress = (event) => {
       // Check for "Ctrl + K" key combination
-      if (event.ctrlKey && event.key === "m") {
+      if (event.ctrlKey && event.key === "M") {
         event.preventDefault(); // Prevent the default browser action for "Ctrl + K"
         SectorAddHandler(); // Call the button click handler
       }
@@ -31,6 +31,13 @@ const AddSector = ({ handleSectionValue }) => {
     }
     // console.log(storeData);
   }, [handleSectionValue, storeData]);
+
+  // Focus the input field when it is shown
+  useEffect(() => {
+    if (addSector && inputRef.current) {
+      inputRef.current.focus(); // Focus the input field
+    }
+  }, [addSector]);
 
   //show input box
   const SectorAddHandler = () => {
@@ -59,7 +66,7 @@ const AddSector = ({ handleSectionValue }) => {
   return (
     <>
       <div className={classes.addTaskTitle} onClick={SectorAddHandler}>
-        <p>Add Sector (ctrl + m)</p>
+        <p>Add Sector</p>
       </div>
 
       <div
@@ -74,6 +81,7 @@ const AddSector = ({ handleSectionValue }) => {
               value={inputValue}
               onChange={inputHandler}
               required
+              ref={inputRef}
             />
           </div>
           <div className={classes.buttonWraper}>
