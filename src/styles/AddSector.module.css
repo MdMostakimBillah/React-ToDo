@@ -24,6 +24,7 @@
   box-shadow: 0px 2px 5px #cccccc;
   border-radius: 7px;
   overflow: hidden;
+  z-index: 9999999;
 }
 .show {
   transform: translateY(0);

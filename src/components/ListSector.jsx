@@ -2,7 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import classes from "../styles/ListSector.module.css";
 const ListSector = ({ sectorList }) => {
   const [clickedItem, setClickedItem] = useState(null);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(() => {
+    // Initialize list with data from localStorage if available
+    const storeData = localStorage.getItem("myData"); //get data form localStore
+    return storeData ? JSON.parse(storeData) : [];
+  });
   const [editingIndex, setEditingIndex] = useState(null);
   const [newName, setNewName] = useState("");
 
@@ -14,6 +18,11 @@ const ListSector = ({ sectorList }) => {
       setList(sectorList);
     }
   }, [sectorList]);
+
+  //store data in localStore
+  useEffect(() => {
+    localStorage.setItem("myData", JSON.stringify(list));
+  }, [list]);
 
   //when click anywhere edit and delete button should be hide
   useEffect(() => {
@@ -50,7 +59,6 @@ const ListSector = ({ sectorList }) => {
 
   //save editing data
   const saveEdit = (index) => {
-    console.log(index);
     const updatedList = list.map((item, i) =>
       i === index ? { ...item, name: newName } : item
     );
@@ -58,6 +66,13 @@ const ListSector = ({ sectorList }) => {
     setEditingIndex(null); //remove the index
     setClickedItem(null); //hide the editing button
   };
+
+  //deleting data
+  const DeleteFunction = (index) => {
+    const updateList = list.filter((_, i) => i !== index);
+    setList(updateList);
+  };
+
   return (
     <div className={classes.listSectorWraper}>
       <ul>
@@ -85,6 +100,7 @@ const ListSector = ({ sectorList }) => {
                   onChange={handleRenem}
                   type="text"
                   autoFocus
+                  required
                   onBlur={() => saveEdit(index)}
                 />
               </form>
@@ -104,7 +120,10 @@ const ListSector = ({ sectorList }) => {
                 edit_square
               </span>
 
-              <span className={`material-symbols-outlined ${classes.delete}`}>
+              <span
+                className={`material-symbols-outlined ${classes.delete}`}
+                onClick={() => DeleteFunction(index)}
+              >
                 delete
               </span>
             </div>
