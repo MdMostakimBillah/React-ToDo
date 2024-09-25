@@ -1,0 +1,46 @@
+.WraperListOperation {
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.TaskList,
+.ProcessingList,
+.CompleteList,
+.Delete {
+  /* background-color: #ffffff21; */
+  border-radius: 5px;
+  width: 100%;
+  /* height: calc(100vh - 60px); */
+  height: 100%;
+  margin: 0 5px;
+}
+.topTitle {
+  padding: 12px 15px;
+  display: flex;
+  border-bottom: 2px solid #c2c2c275;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--secondary-white-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.topTitle h3 {
+  font-size: 15px;
+  margin-left: 08px;
+  color: var(--title-text-color);
+}
+
+.topTitle span {
+  color: var(--title-text-color);
+  font-size: 22px;
+}
+.taskesWraper {
+  height: calc(100vh - 110px);
+  overflow-y: scroll;
+}
+.taskesWraper::-webkit-scrollbar {
+  width: 0;
+}

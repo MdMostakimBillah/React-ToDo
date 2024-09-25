@@ -1,0 +1,44 @@
+.singleTask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondary-white-color);
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--title-text-color);
+  margin: 5px 0;
+}
+.taskcontrolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* background: linear-gradient(360deg, #c7c7c7, var(--white-color)); */
+  background-color: var(--secondary-white-color);
+  border-bottom: 1px solid #c2c2c275;
+  padding-left: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: grab;
+  user-select: none;
+}
+.taskcontrolBar span {
+  font-size: 18px;
+  color: var(--title-text-color);
+}
+.dragingIconWraper {
+  margin-top: 5px;
+}
+.dragingIconWraper span {
+  transform: rotate(90deg);
+}
+.removeAndEditWraper span {
+  padding: 8px 5px;
+  cursor: pointer;
+}
+.notes p {
+  padding: 10px 10px;
+  line-height: 24px;
+  user-select: none;
+}

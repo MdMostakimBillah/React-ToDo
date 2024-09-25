@@ -5,6 +5,21 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+:root {
+  --white-color: #161616;
+  /* --white-color: #fff; */
+  /* --secondary-white-color: rgb(235, 235, 235); */
+  --secondary-white-color: #353b49;
+  /* --main-color: #a18aff; */
+  --main-color: #272d39;
+  /* --title-text-color: rgb(29, 29, 29); */
+  --title-text-color: #dbdbdb;
+  --shadow-color: #cccccc;
+  --input-border-color: #a7a7a7;
+}
+body {
+  background-color: #13171f;
+}
 #root {
   padding: 7px;
 }
