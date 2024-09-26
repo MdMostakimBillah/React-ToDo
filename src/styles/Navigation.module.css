@@ -1,7 +1,7 @@
 .navigationWraper {
-  width: 300px;
+  min-width: 300px;
   height: calc(100dvh - 60px);
-  background-color: #fff;
+  background-color: var(--secondary-white-color);
   border-radius: 7px;
   margin: 10px 0;
   position: relative;
@@ -19,10 +19,10 @@
   align-items: center;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--secondary-white-color);
 }
 .navTitle h3 {
-  color: rgb(29, 29, 29);
+  color: var(--title-text-color);
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
@@ -31,7 +31,7 @@
 .activeAction {
   width: 100%;
   height: 2px;
-  background-color: rgb(194, 194, 194);
+  background-color: #767981;
   position: relative;
 }
 .activeAction::after {
@@ -39,7 +39,7 @@
   content: "";
   width: 80px;
   height: 100%;
-  background-color: #a18aff;
+  /* background-color: #a18aff; */
   left: 0;
   top: 0;
 }
@@ -47,7 +47,7 @@
 .toggleSliderArrow {
   width: 30px;
   height: 50px;
-  background-color: #9d87f7;
+  /* background-color: #9d87f7; */
   position: absolute;
   top: 50%;
   right: -30px;

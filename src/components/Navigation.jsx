@@ -2,21 +2,35 @@ import { useState, useEffect } from "react";
 import classes from "../styles/Navigation.module.css";
 import AddSector from "./AddSector";
 import ListSector from "./ListSector";
-const Navigation = () => {
+const Navigation = ({ SectorHanlder, listStore }) => {
   const [section, setSection] = useState([]);
   const handleSectionValue = (value) => {
     setSection(value);
   };
+
   const [showTaskTitle, setShowTaskTitle] = useState(() => {
     const toggleNav = localStorage.getItem("toggle");
     return toggleNav ? JSON.parse(toggleNav) : true;
   });
+
   const ToggleTaskTitle = () => {
     setShowTaskTitle(!showTaskTitle);
   };
+
   useEffect(() => {
     localStorage.setItem("toggle", JSON.stringify(showTaskTitle));
   }, [showTaskTitle]);
+
+  //data recived and pass to parent selected sctor
+  const HandleSecetredSector = (item, index) => {
+    SectorHanlder(item, index); // pass data to parent
+  };
+
+  //recived total data
+  const recivedList = (list) => {
+    listStore(list);
+  };
+
   return (
     <div
       className={`${classes.navigationWraper} ${
@@ -31,7 +45,11 @@ const Navigation = () => {
 
       <AddSector handleSectionValue={handleSectionValue} />
 
-      <ListSector sectorList={section} />
+      <ListSector
+        sectorList={section}
+        recivedSelectedSector={HandleSecetredSector}
+        recivedList={recivedList}
+      />
 
       <div className={classes.toggleSliderArrow} onClick={ToggleTaskTitle}>
         <span

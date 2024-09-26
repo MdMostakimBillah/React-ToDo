@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import classes from "../styles/ListSector.module.css";
-const ListSector = ({ sectorList }) => {
+const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
   const [clickedItem, setClickedItem] = useState(null);
   const [list, setList] = useState(() => {
     // Initialize list with data from localStorage if available
@@ -23,6 +23,7 @@ const ListSector = ({ sectorList }) => {
   useEffect(() => {
     localStorage.setItem("myData", JSON.stringify(list));
   }, [list]);
+  // console.log(list);
 
   //when click anywhere edit and delete button should be hide
   useEffect(() => {
@@ -73,6 +74,17 @@ const ListSector = ({ sectorList }) => {
     setList(updateList);
   };
 
+  //selectSector function
+  const selectSector = (item, index) => {
+    recivedSelectedSector(item, index);
+    // console.log(item);
+    // console.log(index);
+  };
+  //pass the total data
+  useEffect(() => {
+    recivedList(list);
+  }, [recivedList, list]);
+
   return (
     <div className={classes.listSectorWraper}>
       <ul>
@@ -105,7 +117,7 @@ const ListSector = ({ sectorList }) => {
                 />
               </form>
             ) : (
-              <p>{item.name}</p>
+              <p onClick={() => selectSector(item, index)}>{item.name}</p>
             )}
             <div
               ref={boxRef}
