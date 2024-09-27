@@ -1,73 +1,124 @@
 import { useEffect, useState } from "react";
 import classes from "../styles/TodoListOperation.module.css";
 import SingleTask from "./SingleTask";
-const TodoListOperation = ({ workingSector, sectoreIndex, listData }) => {
-  const [list, setList] = useState(() => {
-    const savedList = localStorage.getItem("db");
-    return savedList ? JSON.parse(savedList) : listData;
-  });
-  const [sector, setSector] = useState(() => {
-    const sotoredData = localStorage.getItem("seleteSector");
-    return sotoredData ? JSON.parse(sotoredData) : [];
-  });
-  const [sectorIndex, setSectorIndex] = useState();
+const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
+  //checking Selected Data available or not in whole array
+  const selectedDataFilter = sectorData.filter(
+    (item) => item.value === workingSector.value
+  );
+
+  // const getSelectedDataFromLocalStorage = JSON.parse(
+  //   localStorage.getItem("seletedSector")
+  // );
+
+  const getSelectedDataFromLocalStorage =
+    JSON.parse(localStorage.getItem("seletedSector")) || {}; // Set an empty object if not found
+
+  // If the object is not available in localStorage, set an initial default object
+  if (
+    !getSelectedDataFromLocalStorage ||
+    Object.keys(getSelectedDataFromLocalStorage).length === 0
+  ) {
+    const initialData = { value: "No Sector Selected" }; // Replace with your initial default object
+    localStorage.setItem("seletedSector", JSON.stringify(initialData));
+  }
+
+  // console.log(sectorData);
+
+  // const [data, setData] = useLocalStorage("selectedData");
+  // // filter the clicked sector
+  // const selectedSector = sector.filter(
+  //   (item) => item.value === workingSector.value
+  // );
+  //store the selected data in local storage
+  // useEffect(() => {
+  //   localStorage.setItem("selectedData", JSON.stringify(selectedSector));
+  // }, [selectedSector]);
+  // console.log(selectedSector);
+
+  // const [list, setList] = useState(() => {
+
+  //   //all list data is here
+  //   const savedList = localStorage.getItem("myData");
+  //   return savedList ? JSON.parse(savedList) : null;
+  // });
+
+  // const [sector, setSector] = useState(() => {
+  //   const sotoredData = localStorage.getItem("seleteSector");
+  //   return sotoredData ? JSON.parse(sotoredData) : [];
+  // });
+  // const [sectorIndex, setSectorIndex] = useState();
+
   const [newInput, setNewInput] = useState("");
-
-  //checking the clicked value is available in whole array or note
-  const clickedData = list.filter((title) => title.name === sector.name);
-  const showingClickdata = clickedData.map((item) => item)[0];
-
-  //input hander
+  // //input hander
   const inputHanlder = (e) => {
     setNewInput(e.target.value);
   };
 
-  //submit handlr
+  //checking the clicked value is available in whole array or note
+  // const clickedData = list.filter((title) => title.name === sector.name);
+  // const showingClickdata = clickedData.map((item) => item)[0];
+
+  // console.log(list);
+
+  //list update
+  // useEffect(() => {
+  //   setList(listData);
+  // }, [listData]);
+
+  // //submit handlr
   const handleSumit = (e) => {
     e.preventDefault();
-    const updated = list.map((item) =>
-      item.name === sector.name
+    const addTask = sectorData.map((item, intex) =>
+      item.value === getSelectedDataFromLocalStorage.value
         ? { ...item, allChildTasks: [...item.allChildTasks, newInput] }
         : item
     );
-
-    setList(updated); //here adding and updating my data and add some inpur in array but how to store it local storage when i refresh the page the data will remove
+    setSectorData(addTask);
+    localStorage.setItem("storeData", JSON.stringify(addTask));
     setNewInput("");
   };
 
   //update list
-  useEffect(() => {
-    localStorage.setItem("db", JSON.stringify(list));
-  }, [list]);
+  // useEffect(() => {
+  //   localStorage.setItem("db", JSON.stringify(list));
+  // }, [list]);
 
   // Set list data in state on initial mount
   // useEffect(() => {
   //   if (listData && list.length === 0) {
   //     setList(listData);
   //   }
-  // }, [listData]);
+  // }, [listData, list]);
 
   // set list data in a state
-  useEffect(() => {
-    setList(listData);
-  }, [listData]);
+  // useEffect(() => {
+  //   setList(listData);
+  // }, [listData]);
 
-  //index selected sector
-  useEffect(() => {
-    setSectorIndex(sectoreIndex);
-  }, [sectoreIndex]);
+  // useEffect(() => {
+  //   const savedList = localStorage.getItem("db");
+  //   if (savedList) {
+  //     setList(JSON.parse(savedList));
+  //   }
+  // }, []);
 
-  //data store this variable state
-  useEffect(() => {
-    if (workingSector && Object.keys(workingSector).length > 0) {
-      setSector(workingSector);
-    }
-  }, [workingSector]);
+  // //index selected sector
+  // useEffect(() => {
+  //   setSectorIndex(sectoreIndex);
+  // }, [sectoreIndex]);
 
-  //store data in local storage
-  useEffect(() => {
-    localStorage.setItem("seleteSector", JSON.stringify(sector));
-  }, [sector]);
+  // //data store this variable state
+  // useEffect(() => {
+  //   if (workingSector && Object.keys(workingSector).length > 0) {
+  //     setSector(workingSector);
+  //   }
+  // }, [workingSector]);
+
+  // //store data in local storage
+  // useEffect(() => {
+  //   localStorage.setItem("seleteSector", JSON.stringify(sector));
+  // }, [sector]);
 
   return (
     <>
@@ -78,16 +129,13 @@ const TodoListOperation = ({ workingSector, sectoreIndex, listData }) => {
             <h3>Task List</h3>
           </div>
           <div className={classes.taskesWraper}>
-            {list.map((item, index) =>
-              item.name === sector.name
+            {sectorData.map((item, index) =>
+              item.value === getSelectedDataFromLocalStorage.value
                 ? item.allChildTasks.map((task, i) => (
                     <SingleTask task={task} key={i} />
                   ))
                 : ""
             )}
-
-            {/* <SingleTask />
-            <SingleTask /> */}
           </div>
         </div>
         <div className={classes.ProcessingList}>
@@ -126,7 +174,11 @@ const TodoListOperation = ({ workingSector, sectoreIndex, listData }) => {
                   placeholder="Add Task"
                   value={newInput}
                   onChange={inputHanlder}
-                  disabled={showingClickdata && sector.name ? false : true}
+                  disabled={
+                    selectedDataFilter && getSelectedDataFromLocalStorage.value
+                      ? false
+                      : true
+                  }
                   required
                 />
               </div>
@@ -136,8 +188,8 @@ const TodoListOperation = ({ workingSector, sectoreIndex, listData }) => {
                 </button>
                 <div className={classes.selectedSection}>
                   <p>
-                    {showingClickdata && sector.name
-                      ? sector.name
+                    {selectedDataFilter && getSelectedDataFromLocalStorage.value
+                      ? getSelectedDataFromLocalStorage.value
                       : "No Sector Selected"}
                   </p>
                 </div>
