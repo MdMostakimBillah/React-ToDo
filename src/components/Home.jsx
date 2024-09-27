@@ -5,26 +5,29 @@ import TodoListOperation from "./TodoListOperation";
 const Home = () => {
   //get selected sector in this state variable
   const [sectore, setSector] = useState([]);
-  const [sectoreIndex, setSectorIndex] = useState();
 
-  const [list, setList] = useState([]);
+  //all data here which is store in local storage
+  const [data, setData] = useState([]);
+  const [dataHanlder, setDataHandler] = useState(null);
+
   //selected sectior store in state variable function
-  const selectedSector = (item, index) => {
+  const selectedSector = (item) => {
     setSector(item);
-    setSectorIndex(index);
   };
 
-  const listStore = (item) => {
-    setList(item);
+  const dataHandler = (section, sectionHanlder) => {
+    setData(section);
+    setDataHandler(() => sectionHanlder);
   };
 
   return (
     <div className={classes.container}>
-      <Navigation SectorHanlder={selectedSector} listStore={listStore} />
+      {/* <Navigation SectorHanlder={selectedSector} listStore={listStore} /> */}
+      <Navigation SectorHanlder={selectedSector} dataHandler={dataHandler} />
       <TodoListOperation
         workingSector={sectore}
-        sectoreIndex={sectoreIndex}
-        listData={list}
+        sectorData={data}
+        setSectorData={dataHanlder}
       />
     </div>
   );

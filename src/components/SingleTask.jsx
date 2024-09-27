@@ -1,6 +1,6 @@
 import classes from "../styles/SingleTask.module.css";
 
-const SingleTask = () => {
+const SingleTask = ({ task }) => {
   return (
     <div className={classes.singleTask}>
       <div className={classes.taskcontrolBar}>
@@ -13,10 +13,7 @@ const SingleTask = () => {
         </div>
       </div>
       <div className={classes.notes}>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita
-          quaerat error eum mollitia odio
-        </p>
+        <p>{task}</p>
       </div>
     </div>
   );

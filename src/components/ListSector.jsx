@@ -1,29 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import classes from "../styles/ListSector.module.css";
-const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
+// import useLocalStorage from "../Hooks/useLocalStorage";
+const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
   const [clickedItem, setClickedItem] = useState(null);
-  const [list, setList] = useState(() => {
-    // Initialize list with data from localStorage if available
-    const storeData = localStorage.getItem("myData"); //get data form localStore
-    return storeData ? JSON.parse(storeData) : [];
-  });
+
   const [editingIndex, setEditingIndex] = useState(null);
   const [newName, setNewName] = useState("");
 
   const boxRef = useRef(null);
-
-  //storing the props data in a state
-  useEffect(() => {
-    if (sectorList && sectorList.length > 0) {
-      setList(sectorList);
-    }
-  }, [sectorList]);
-
-  //store data in localStore
-  useEffect(() => {
-    localStorage.setItem("myData", JSON.stringify(list));
-  }, [list]);
-  // console.log(list);
 
   //when click anywhere edit and delete button should be hide
   useEffect(() => {
@@ -47,10 +31,14 @@ const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
     setClickedItem(clickedItem === Item ? null : Item);
   };
 
+  const [editingContent, setEditingContent] = useState(""); //data which is editing
+  // console.log(editingContent);
+
   //editing start
   const startEditing = (index, content) => {
     setEditingIndex(index === editingIndex ? null : index);
     setNewName(content);
+    setEditingContent(content);
   };
 
   //rename
@@ -60,37 +48,56 @@ const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
 
   //save editing data
   const saveEdit = (index) => {
-    const updatedList = list.map((item, i) =>
-      i === index ? { ...item, name: newName } : item
+    const updatedList = sectorList.map((item, i) =>
+      i === index ? { ...item, value: newName } : item
     );
-    setList(updatedList); //set updated value
+    //seleted data get here
+    const seletData = JSON.parse(localStorage.getItem("seletedSector"));
+    if (seletData.value === editingContent) {
+      localStorage.setItem("seletedSector", JSON.stringify({ value: newName }));
+    } else {
+      console.log("other data changed");
+    }
+
+    setSectorList(updatedList); //set updated value
+    localStorage.setItem("storeData", JSON.stringify(updatedList));
     setEditingIndex(null); //remove the index
     setClickedItem(null); //hide the editing button
   };
 
   //deleting data
-  const DeleteFunction = (index) => {
-    const updateList = list.filter((_, i) => i !== index);
-    setList(updateList);
+  const DeleteFunction = (item, index) => {
+    const updateList = sectorList.filter((_, i) => i !== index);
+
+    //if selected item was deleted then this item should be empty
+    const seletData = JSON.parse(localStorage.getItem("seletedSector"));
+    if (seletData.name === item.name) {
+      localStorage.setItem("seletedSector", JSON.stringify({ value: "" }));
+    }
+    setSectorList(updateList);
+    localStorage.setItem("storeData", JSON.stringify(updateList));
   };
 
   //selectSector function
   const selectSector = (item, index) => {
-    recivedSelectedSector(item, index);
-    // console.log(item);
-    // console.log(index);
+    //store selected data first
+    localStorage.setItem("seletedSector", JSON.stringify(item));
+    //get this data from local storage
+    const seletData = JSON.parse(localStorage.getItem("seletedSector"));
+
+    // if (seletData.value === editingContent) {
+    //   localStorage.setItem("seletedSector", JSON.stringify({ value: newName }));
+    // }
+    recivedSelectedSector(seletData);
+    // console.log(seletData);
   };
-  //pass the total data
-  useEffect(() => {
-    recivedList(list);
-  }, [recivedList, list]);
 
   return (
     <div className={classes.listSectorWraper}>
       <ul>
         {/*this map for displying all item in nav*/}
-        {list.map((item, index) => (
-          <li key={index} value={item.name}>
+        {sectorList.map((item, index) => (
+          <li key={index} value={item.value}>
             <span
               className={`material-symbols-outlined ${classes.toggleIcon}`}
               onClick={() => EditDeleteHandler(index)}
@@ -117,7 +124,7 @@ const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
                 />
               </form>
             ) : (
-              <p onClick={() => selectSector(item, index)}>{item.name}</p>
+              <p onClick={() => selectSector(item, index)}>{item.value}</p>
             )}
             <div
               ref={boxRef}
@@ -127,14 +134,14 @@ const ListSector = ({ sectorList, recivedSelectedSector, recivedList }) => {
             >
               <span
                 className={`material-symbols-outlined ${classes.edit}`}
-                onClick={() => startEditing(index, item.name)}
+                onClick={() => startEditing(index, item.value)}
               >
                 edit_square
               </span>
 
               <span
                 className={`material-symbols-outlined ${classes.delete}`}
-                onClick={() => DeleteFunction(index)}
+                onClick={() => DeleteFunction(item, index)}
               >
                 delete
               </span>

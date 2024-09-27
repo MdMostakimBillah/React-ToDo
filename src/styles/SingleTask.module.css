@@ -37,6 +37,10 @@
   padding: 8px 5px;
   cursor: pointer;
 }
+.notes {
+  text-align: start;
+  width: 100%;
+}
 .notes p {
   padding: 10px 10px;
   line-height: 24px;

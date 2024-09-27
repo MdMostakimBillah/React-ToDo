@@ -1,10 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "../styles/AddSector.module.css";
+import useLocalStorage from "../Hooks/useLocalStorage";
 const AddSector = ({ handleSectionValue }) => {
   const [addSector, setAddSector] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [storeData, setStoreData] = useState([]); // array store here
+  const [inputValue, setInputValue] = useState(""); //input value store here
+  const [data, setData] = useLocalStorage("storeData"); //stored all data here
+
+  //pass all data here
+  useEffect(() => {
+    handleSectionValue(data, setData);
+  }, [handleSectionValue, data, setData]);
+
   const inputRef = useRef(null);
+
   //keyboard shortcut key
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -23,22 +31,6 @@ const AddSector = ({ handleSectionValue }) => {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
-
-  //stop re-rendering
-  useEffect(() => {
-    if (storeData.length > 0) {
-      handleSectionValue(storeData);
-    }
-    // console.log(storeData);
-  }, [handleSectionValue, storeData]);
-
-  // Focus the input field when it is shown
-  useEffect(() => {
-    if (addSector && inputRef.current) {
-      inputRef.current.focus(); // Focus the input field
-    }
-  }, [addSector]);
-
   //show input box
   const SectorAddHandler = () => {
     setAddSector(true);
@@ -48,21 +40,31 @@ const AddSector = ({ handleSectionValue }) => {
   const CancleToggle = () => {
     setAddSector(false);
   };
-
+  // input operation
   const inputHandler = (e) => {
     setInputValue(e.target.value);
   };
 
   //form submition
   const SubmitHandle = (e) => {
-    e.preventDefault();
-    setStoreData((prevData) => [
-      ...prevData,
-      { name: inputValue, allChildTasks: [] },
-    ]);
+    e.preventDefault(); //default behaviour stoped
+    //if input value is true then all the stored data and new data here
+    if (inputValue) {
+      const updatedData = [...data, { value: inputValue, allChildTasks: [] }];
+      setData(updatedData);
+      localStorage.setItem("storeData", JSON.stringify(updatedData));
+    }
     setInputValue(""); // Clear input after submission
     setAddSector(false);
   };
+
+  // Focus the input field when it is shown
+  useEffect(() => {
+    if (addSector && inputRef.current) {
+      inputRef.current.focus(); // Focus the input field
+    }
+  }, [addSector]);
+
   return (
     <>
       <div className={classes.addTaskTitle} onClick={SectorAddHandler}>
