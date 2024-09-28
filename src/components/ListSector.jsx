@@ -3,11 +3,10 @@ import classes from "../styles/ListSector.module.css";
 // import useLocalStorage from "../Hooks/useLocalStorage";
 const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
   const [clickedItem, setClickedItem] = useState(null);
-
   const [editingIndex, setEditingIndex] = useState(null);
   const [newName, setNewName] = useState("");
-
   const boxRef = useRef(null);
+
 
   //when click anywhere edit and delete button should be hide
   useEffect(() => {
@@ -51,6 +50,7 @@ const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
     const updatedList = sectorList.map((item, i) =>
       i === index ? { ...item, value: newName } : item
     );
+
     //seleted data get here
     const seletData = JSON.parse(localStorage.getItem("seletedSector"));
     if (seletData.value === editingContent) {

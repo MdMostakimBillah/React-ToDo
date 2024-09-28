@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import classes from "../styles/TodoListOperation.module.css";
 import SingleTask from "./SingleTask";
 const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
+  const [activeCard, setActiveCard] = useState(null);
+  console.log(activeCard);
+
   //checking Selected Data available or not in whole array
   let selectedDataFilter =
     sectorData.filter((item) => item.value === workingSector.value) || [];
@@ -51,7 +54,15 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
             {sectorData.map((item) =>
               item.value === getSelectedDataFromLocalStorage.value
                 ? item.allChildTasks.map((task, i) => (
-                    <SingleTask task={task} key={i} index={i} />
+                    <SingleTask
+                      task={task}
+                      key={i}
+                      index={i}
+                      workingSector={getSelectedDataFromLocalStorage}
+                      sectorData={sectorData}
+                      setSectorData={setSectorData}
+                      setActiveCard={setActiveCard}
+                    />
                   ))
                 : ""
             )}
@@ -73,16 +84,16 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
           </div>
           <div className={classes.taskesWraper}></div>
         </div>
-        <div className={classes.Delete}>
-          {/* <div className={classes.topTitle}>
+        {/* <div className={classes.Delete}>
+          <div className={classes.topTitle}>
             <span className="material-symbols-outlined">delete</span>
             <h3>Delete</h3>
-          </div> */}
-          {/*delete box */}
+          </div>
+
           <div className={classes.deleteBox}>
             <span className="material-symbols-outlined">delete</span>
           </div>
-        </div>
+        </div> */}
         {}
       </div>
 
@@ -121,6 +132,11 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
             </div>
           </div>
         </form>
+      </div>
+
+      {/* delete box */}
+      <div className={classes.deleteSmallBox}>
+        <span className="material-symbols-outlined">delete</span>
       </div>
     </>
   );

@@ -18,7 +18,7 @@
 .Delete {
   position: relative;
   max-width: 150px;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 200px);
   margin: auto 0;
   background-color: #353b49;
   margin-right: -150px;
@@ -74,7 +74,6 @@
   margin: 0 auto;
   background-color: var(--secondary-white-color);
   border: 2px solid #767981;
-  /* padding: 0 10px; */
   border-radius: 7px;
   overflow: hidden;
 }
@@ -114,7 +113,7 @@
 .selectedSection p {
   font-size: 15px;
 }
-.deleteBox {
+/* .deleteBox {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -125,6 +124,25 @@
   text-align: center;
 }
 .deleteBox span {
+  font-size: 80px;
+  color: var(--title-text-color);
+  user-select: none;
+} */
+
+.deleteSmallBox {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 10px;
+  bottom: 1%;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--secondary-white-color);
+}
+.deleteSmallBox span {
   font-size: 80px;
   color: var(--title-text-color);
   user-select: none;
