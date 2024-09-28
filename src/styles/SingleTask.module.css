@@ -9,12 +9,15 @@
   color: var(--title-text-color);
   margin: 5px 0;
 }
+/* .singleTask:active {
+  opacity: 0.7;
+  border: 1px;
+} */
 .taskcontrolBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* background: linear-gradient(360deg, #c7c7c7, var(--white-color)); */
   background-color: var(--secondary-white-color);
   border-bottom: 1px solid #c2c2c275;
   padding-left: 5px;
@@ -45,4 +48,18 @@
   padding: 10px 10px;
   line-height: 24px;
   user-select: none;
+}
+.TaskEditor {
+  padding: 5px;
+}
+.TaskEditor textarea {
+  width: 100%;
+  background-color: var(--main-color);
+  outline: none;
+  border: none;
+  color: var(--title-text-color);
+  height: 30px;
+  resize: none;
+  height: 80px;
+  padding: 5px;
 }
