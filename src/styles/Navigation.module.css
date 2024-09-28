@@ -1,14 +1,14 @@
 .navigationWraper {
   min-width: 300px;
-  height: calc(100dvh - 60px);
+  height: calc(100dvh - 20dvh);
   background-color: var(--secondary-white-color);
   border-radius: 7px;
-  margin: 10px 0;
+  margin: auto 0;
   position: relative;
   transition: 0.3s ease-in-out;
 }
 .hideNavBox {
-  margin-left: -315px;
+  margin-left: -305px;
 }
 .showNavBox {
   margin-left: 0;
@@ -39,7 +39,6 @@
   content: "";
   width: 80px;
   height: 100%;
-  /* background-color: #a18aff; */
   left: 0;
   top: 0;
 }
@@ -47,10 +46,9 @@
 .toggleSliderArrow {
   width: 30px;
   height: 50px;
-  /* background-color: #9d87f7; */
   position: absolute;
   top: 50%;
-  right: -30px;
+  right: -27px;
   z-index: 10000;
   display: flex;
   justify-content: center;
@@ -58,7 +56,7 @@
   cursor: pointer;
 }
 .toggleSliderArrow span {
-  font-size: 35px;
+  font-size: 30px;
   color: #fff;
   transition: 0.3s ease-in-out;
 }

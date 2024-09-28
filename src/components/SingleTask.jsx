@@ -1,6 +1,9 @@
 import classes from "../styles/SingleTask.module.css";
 
-const SingleTask = ({ task }) => {
+const SingleTask = ({ task, index }) => {
+  console.log(task);
+  console.log(index);
+
   return (
     <div className={classes.singleTask}>
       <div className={classes.taskcontrolBar}>
