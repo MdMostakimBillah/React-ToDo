@@ -50,7 +50,10 @@ const AddSector = ({ handleSectionValue }) => {
     e.preventDefault(); //default behaviour stoped
     //if input value is true then all the stored data and new data here
     if (inputValue) {
-      const updatedData = [...data, { value: inputValue, allChildTasks: [] }];
+      const updatedData = [
+        ...data,
+        { value: inputValue, allChildTasks: [], processing: [], complete: [] },
+      ];
       setData(updatedData);
       localStorage.setItem("storeData", JSON.stringify(updatedData));
     }

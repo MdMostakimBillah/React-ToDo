@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import classes from "../styles/SingleTask.module.css";
 
 const SingleTask = ({
+  status,
   task,
   index,
   workingSector,
@@ -50,6 +51,8 @@ const SingleTask = ({
     localStorage.setItem("storeData", JSON.stringify(updatedData));
     setEditingIndex(null);
   };
+
+  //draging functionality
 
   return (
     <div

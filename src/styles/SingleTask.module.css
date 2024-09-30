@@ -7,18 +7,19 @@
   border-radius: 5px;
   font-size: 15px;
   color: var(--title-text-color);
-  margin: 5px 0;
+  /* margin: 10px 0; */
 }
-/* .singleTask:active {
+.singleTask:active {
   opacity: 0.7;
-  border: 1px;
-} */
+  border: 1px solid #c2c2c275;
+}
 .taskcontrolBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: var(--secondary-white-color);
+  /* background-color: var(--secondary-white-color); */
+  background-color: #4f5769;
   border-bottom: 1px solid #c2c2c275;
   padding-left: 5px;
   border-top-left-radius: 5px;
