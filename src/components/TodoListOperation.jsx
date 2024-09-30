@@ -56,11 +56,22 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
     //   ...taskToMove,
     //   status: status,
     // });
-    const taskToMove = sectorData.map((item, index) => {
-      const workingSector = JSON.parse(localStorage.getItem("seletedSector"));
-      console.log(workingSector.value === item.value ? item.value : null);
-      // console.log(item);
+    const workingSector = JSON.parse(localStorage.getItem("seletedSector"));
+    const taskToMove = sectorData.filter(
+      (item) => item.value === workingSector.value
+    )[0].allChildTasks;
+
+    // if(taskToMove.allChildTasks){
+
+    // }
+    const updatedTask = taskToMove.filter((_, i) => i !== activeCard);
+    updatedTask.splice(possition, 0, {
+      ...taskToMove,
+      status: status,
     });
+
+    // console.log(taskToMove);
+    // console.log(status);
   };
 
   return (
