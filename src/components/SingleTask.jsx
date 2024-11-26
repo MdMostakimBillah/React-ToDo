@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react";
 import classes from "../styles/SingleTask.module.css";
-
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 const SingleTask = ({
-  status,
   task,
   index,
   workingSector,
   sectorData,
   setSectorData,
-  setActiveCard,
 }) => {
   const [taskEditingField, setTaskEditingField] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
+
+  const [editingStyle, setEditingStyle] = useState(false);
+
+  const [readNote, setReadNote] = useState(false);
+  const handleReadNote = () => {
+    setReadNote(!readNote);
+  };
 
   const handleTextArea = (e) => {
     setTaskEditingField(e.target.value);
   };
 
+  // Convert Markdown to HTML
+  const rawHtml = marked(task);
+
+  // Sanitize the HTML to prevent XSS attacks
+  const sanitizedHtml = DOMPurify.sanitize(rawHtml);
+
   const editTaskHandler = (value, i) => {
     setEditingIndex(i === editingIndex ? null : i);
     setTaskEditingField(value);
+    setEditingStyle(true);
   };
 
   const deleteTaskHandler = () => {
@@ -50,28 +63,35 @@ const SingleTask = ({
     setSectorData(updatedData);
     localStorage.setItem("storeData", JSON.stringify(updatedData));
     setEditingIndex(null);
+    setEditingStyle(false);
   };
 
   //draging functionality
-
   return (
     <div
-      className={classes.singleTask}
-      draggable
-      onDragStart={() => setActiveCard(index)}
-      onDragEnd={() => setActiveCard(null)}
+      className={`${classes.singleTask} ${readNote ? classes.ReadNote : ""}`}
     >
-      <div className={classes.taskcontrolBar}>
+      <div className={classes.taskcontrolBar} onDoubleClick={handleReadNote}>
         <div className={classes.dragingIconWraper}>
           <span className="material-symbols-outlined">drag_indicator</span>
         </div>
         <div className={classes.removeAndEditWraper}>
-          <span
-            className="material-symbols-outlined"
-            onClick={() => editTaskHandler(task, index)}
-          >
-            edit_square
-          </span>
+          {readNote ? (
+            <span
+              onClick={handleReadNote}
+              className={`material-symbols-outlined ${classes.minimizeRead}`}
+            >
+              close_fullscreen
+            </span>
+          ) : (
+            <span
+              className="material-symbols-outlined"
+              onClick={() => editTaskHandler(task, index)}
+            >
+              edit_square
+            </span>
+          )}
+
           <span
             className="material-symbols-outlined"
             onClick={deleteTaskHandler}
@@ -80,7 +100,11 @@ const SingleTask = ({
           </span>
         </div>
       </div>
-      <div className={classes.notes}>
+      <div
+        className={`${classes.notes} ${
+          editingStyle ? classes.popupEditingBox : ""
+        }`}
+      >
         {index === editingIndex ? (
           <form action="" className={classes.TaskEditor}>
             <textarea
@@ -92,7 +116,12 @@ const SingleTask = ({
             ></textarea>
           </form>
         ) : (
-          <p>{task}</p>
+          <p
+            className={`${classes.parent} ${classes.markdown_content}`}
+            dangerouslySetInnerHTML={{
+              __html: sanitizedHtml,
+            }}
+          ></p>
         )}
       </div>
     </div>

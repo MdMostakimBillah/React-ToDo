@@ -3,7 +3,7 @@
   height: calc(100dvh - 14px);
   /* background-color: #a18aff; */
   background-color: var(--main-color);
-  padding: 12px;
+  padding: 3px 4px;
   border-radius: 7px;
   position: relative;
   overflow: hidden;

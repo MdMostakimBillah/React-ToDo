@@ -1,20 +1,21 @@
 .WraperListOperation {
   height: auto;
-  /* width: 100%; */
-  width: 1200px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   position: relative;
+  width: calc(100% - 58px);
 }
-.TaskList,
-.ProcessingList,
-.CompleteList {
+/* @media (max-width: 1024px) {
+  .WraperListOperation {
+    width: 100%;
+  }
+} */
+
+.TaskList {
   border-radius: 5px;
-  width: 100%;
   height: 100%;
-  margin: 0 10px;
 }
 .topTitle {
   padding: 12px 15px;
@@ -37,43 +38,80 @@
   color: var(--title-text-color);
   font-size: 22px;
 }
+
 .taskesWraper {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 87px);
   overflow-y: scroll;
-  background-color: rgba(128, 128, 128, 0.048);
+  margin-top: 59px;
+  transition: 0.3s linear;
 }
+
 .taskesWraper::-webkit-scrollbar {
   width: 0;
 }
 
+.taskesWraper {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+.taskesWraper::-webkit-scrollbar {
+  display: none; 
+}
+
 .taskAddInput {
   position: absolute;
-  bottom: 1%;
+  top: 5px;
   left: 0;
   width: 100%;
-  background: linear-gradient(0deg, #272d39, #272d39, #00000000);
 }
+
+.focusNotePade {
+  height: 90dvh;
+}
+
 .taskAddInput form {
   width: 100%;
+  height: 100%;
+  padding: 0 4px;
+  margin: 0 auto;
 }
 .wraperAddTask {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 700px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   background-color: var(--secondary-white-color);
   border: 2px solid #767981;
   border-radius: 7px;
   overflow: hidden;
 }
-.taskAddInput form div input {
+
+.WraperInputArea {
+  flex-direction: column;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.274);
+}
+
+.taskAddInput form div textarea {
   width: 100%;
-  padding: 10px 10px;
+  padding: 0px 10px;
   outline: none;
   background-color: transparent;
   border: none;
   color: var(--title-text-color);
+  font-size: 16px;
+  resize: none;
+  margin-bottom: -11px;
+  padding-top: 10px;
+  padding-bottom: -15px;
+}
+
+.focusNotePade form div textarea {
+  width: 100%;
+  height: calc(80dvh - 59px);
+  padding: 10px;
 }
 .inputField {
   width: 100%;
@@ -82,12 +120,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 25%;
   border-left: 1px solid #767981;
   color: var(--title-text-color);
   padding: 5px 15px;
   background-color: var(--main-color);
 }
+
+.actionBtn {
+  width: 100%;
+  border-top: 1px solid #767981;
+  border-left: 0;
+  height: calc(50px);
+}
+
 .addTaskBtn {
   cursor: pointer;
   outline: none;

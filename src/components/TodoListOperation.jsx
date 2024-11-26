@@ -2,12 +2,17 @@ import { useState } from "react";
 import classes from "../styles/TodoListOperation.module.css";
 import TaskColumn from "./TaskColumn";
 const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
-  //three colom
-  // const [todo, setTodo] = useState("Task List");
-  //dragable card state
-  const [activeCard, setActiveCard] = useState(null);
-  // console.log(activeCard);
 
+  const [activeCard, setActiveCard] = useState(null);
+
+  const [inputNote, setInputNote] = useState(false);
+
+  const focusTextArea = () => {
+    setInputNote(true);
+  };
+  const closeBox = () => {
+    setInputNote(false);
+  };
   //checking Selected Data available or not in whole array
   let selectedDataFilter =
     sectorData.filter((item) => item.value === workingSector.value) || [];
@@ -43,6 +48,7 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
     setSectorData(addTask);
     localStorage.setItem("storeData", JSON.stringify(addTask));
     setNewInput("");
+    setInputNote(false);
   };
   //onDrag function
   const onDrop = (status, possition) => {
@@ -83,63 +89,76 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
           setSectorData={setSectorData}
           onDrop={onDrop}
           setActiveCard={setActiveCard}
-          status="Task List"
+          // status="Task List"
         />
 
-        <TaskColumn
-          sectorData={sectorData}
-          getSelectedDataFromLocalStorage={getSelectedDataFromLocalStorage}
-          setSectorData={setSectorData}
-          onDrop={onDrop}
-          setActiveCard={setActiveCard}
-          status="Processing"
-        />
+        {/*adding data input*/}
+        <div
+          className={`${classes.taskAddInput} ${
+            inputNote ? classes.focusNotePade : " "
+          }`}
+        >
+          <form action="" onSubmit={handleSumit}>
+            <div
+              className={`${classes.wraperAddTask} ${
+                inputNote ? classes.WraperInputArea : " "
+              }`}
+            >
+              <div
+                className={`${classes.inputField} ${
+                  inputNote ? classes.textAreaBox : " "
+                }`}
+              >
+                <textarea
+                  type="text"
+                  value={newInput}
+                  placeholder="Write here"
+                  onChange={inputHanlder}
+                  disabled={
+                    selectedDataFilter[0]
+                      ? false
+                      : getSelectedDataFromLocalStorage.value
+                      ? false
+                      : true
+                  }
+                  required
+                  autoFocus={selectedDataFilter[0] ? true : false}
+                  onFocus={focusTextArea}
+                ></textarea>
+              </div>
+              <div
+                className={`${classes.actionButton} ${
+                  inputNote ? classes.actionBtn : ""
+                }`}
+              >
+                <button type="submit" className={classes.addTaskBtn}>
+                  <span className="material-symbols-outlined">send</span>
+                </button>
 
-        <TaskColumn
-          sectorData={sectorData}
-          getSelectedDataFromLocalStorage={getSelectedDataFromLocalStorage}
-          setSectorData={setSectorData}
-          onDrop={onDrop}
-          setActiveCard={setActiveCard}
-          status="Complete"
-        />
-      </div>
+                {inputNote ? (
+                  <button className={classes.addTaskBtn} type="button">
+                    <span
+                      onClick={closeBox}
+                      className="material-symbols-outlined"
+                    >
+                      close_fullscreen
+                    </span>
+                  </button>
+                ) : (
+                  ""
+                )}
 
-      {/*adding data input*/}
-      <div className={classes.taskAddInput}>
-        <form action="" onSubmit={handleSumit}>
-          <div className={classes.wraperAddTask}>
-            <div className={classes.inputField}>
-              <input
-                type="text"
-                placeholder="Add Task"
-                value={newInput}
-                onChange={inputHanlder}
-                disabled={
-                  selectedDataFilter[0]
-                    ? false
-                    : getSelectedDataFromLocalStorage.value
-                    ? false
-                    : true
-                }
-                required
-                autoFocus={selectedDataFilter[0] ? true : false}
-              />
-            </div>
-            <div className={classes.actionButton}>
-              <button type="submit" className={classes.addTaskBtn}>
-                <span className="material-symbols-outlined">send</span>
-              </button>
-              <div className={classes.selectedSection}>
-                <p>
-                  {selectedDataFilter && getSelectedDataFromLocalStorage.value
-                    ? getSelectedDataFromLocalStorage.value
-                    : "No Sector Selected"}
-                </p>
+                <div className={classes.selectedSection}>
+                  <p>
+                    {selectedDataFilter && getSelectedDataFromLocalStorage.value
+                      ? getSelectedDataFromLocalStorage.value
+                      : "No Sector Selected"}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
       {/* delete box */}

@@ -44,8 +44,8 @@ const Navigation = ({ SectorHanlder, dataHandler }) => {
       }`}
     >
       <div className={classes.navTitle}>
-        <h3>ToDo</h3>
-        <h3>Note</h3>
+        <h3>Note Book</h3>
+        <h3></h3>
       </div>
       <div className={classes.activeAction}></div>
 

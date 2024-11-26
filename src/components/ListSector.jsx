@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import classes from "../styles/ListSector.module.css";
-// import useLocalStorage from "../Hooks/useLocalStorage";
+
 const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
   const [clickedItem, setClickedItem] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);

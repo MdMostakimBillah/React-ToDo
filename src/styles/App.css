@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+
 }
+
 :root {
   --white-color: #161616;
   /* --white-color: #fff; */
@@ -28,4 +30,12 @@ li {
 }
 ul {
   margin-left: 0;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100dvh - 20px);
 }

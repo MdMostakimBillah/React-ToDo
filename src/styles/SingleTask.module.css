@@ -7,24 +7,28 @@
   border-radius: 5px;
   font-size: 15px;
   color: var(--title-text-color);
-  /* margin: 10px 0; */
+  width: calc((100dvw / 4) - 30px);
 }
-.singleTask:active {
-  opacity: 0.7;
-  border: 1px solid #c2c2c275;
+@media (max-width: 1023px) {
+  .singleTask {
+    width: calc((100dvw / 3) - 35px);
+  }
+}
+@media (max-width: 767px) {
+  .singleTask {
+    width: calc((100dvw / 2) - 50px);
+  }
 }
 .taskcontrolBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* background-color: var(--secondary-white-color); */
   background-color: #4f5769;
   border-bottom: 1px solid #c2c2c275;
   padding-left: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  cursor: grab;
   user-select: none;
 }
 .taskcontrolBar span {
@@ -37,6 +41,10 @@
 .dragingIconWraper span {
   transform: rotate(90deg);
 }
+.removeAndEditWraper {
+  display: flex;
+  align-items: center;
+}
 .removeAndEditWraper span {
   padding: 8px 5px;
   cursor: pointer;
@@ -44,23 +52,139 @@
 .notes {
   text-align: start;
   width: 100%;
+  padding-top: 10px;
 }
-.notes p {
-  padding: 10px 10px;
-  line-height: 24px;
-  user-select: none;
+.notes p.parent {
+  padding-bottom: 0;
+  line-height: 23px;
+  white-space: pre-wrap;
+  /* margin-bottom: -11px; */
 }
 .TaskEditor {
   padding: 5px;
 }
+
+.popupEditingBox {
+  position: fixed;
+  width: 80dvw;
+  height: 90dvh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
 .TaskEditor textarea {
   width: 100%;
   background-color: var(--main-color);
   outline: none;
   border: none;
   color: var(--title-text-color);
-  height: 30px;
+  height: 100%;
   resize: none;
-  height: 80px;
-  padding: 5px;
+  padding: 10px;
+  border: 5px solid var(--secondary-white-color);
+  border-style: center;
+  border-radius: 7px;
+  line-height: 25px;
+  color: #ffffffb7;
+  font-size: 16px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.699);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/*markdown*/
+.markdown_content {
+  padding: 10px;
+}
+.markdown_content h1 {
+  /* margin-top: 10px; */
+}
+.markdown_content h1,
+.markdown_content h2,
+.markdown_content h3,
+.markdown_content h4,
+.markdown_content h5,
+.markdown_content h6 {
+  line-height: 0;
+  margin-bottom: -5px;
+}
+.markdown_content h4,
+.markdown_content h5,
+.markdown_content h6 {
+  margin-bottom: -10px;
+}
+.markdown_content blockquote {
+  padding-left: 10px;
+  border-left: 2px solid #969696;
+  background: #272d39;
+  height: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* .markdown_content p {
+} */
+
+.markdown_content ul,
+.markdown_content ol {
+  padding-left: 20px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+.markdown_content li,
+.markdown_content li {
+  display: block;
+  background: transparent;
+  line-height: 20px;
+  margin-bottom: -14px;
+}
+
+.markdown_content code {
+  background: #272d39;
+  padding: 2px 4px;
+  border-radius: 3px;
+  /* padding: 5px; */
+}
+.markdown_content img {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.markdown_content a {
+  color: aqua;
+}
+
+.ReadNote {
+  position: absolute;
+  width: calc(100dvw - 400px);
+  height: 90dvh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  z-index: 9999;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.322);
+}
+.ReadNote p {
+  font-size: 18px;
+  line-height: 32px;
+}
+.ReadNote .notes {
+  padding: 0 20px;
+  width: 100%;
+  margin-top: 37px;
+  padding-top: 15px;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.ReadNote .taskcontrolBar {
+  position: fixed;
+}
+span.minimizeRead {
+  padding: 8px 15px 5px 0px;
 }
