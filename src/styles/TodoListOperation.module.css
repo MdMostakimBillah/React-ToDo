@@ -7,11 +7,6 @@
   position: relative;
   width: calc(100% - 58px);
 }
-/* @media (max-width: 1024px) {
-  .WraperListOperation {
-    width: 100%;
-  }
-} */
 
 .TaskList {
   border-radius: 5px;
@@ -52,11 +47,11 @@
 
 .taskesWraper {
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 }
 
 .taskesWraper::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .taskAddInput {
@@ -110,8 +105,11 @@
 
 .focusNotePade form div textarea {
   width: 100%;
-  height: calc(80dvh - 59px);
-  padding: 10px;
+  height: calc(90dvh - 59px);
+  padding: 15px;
+  font-size: 16px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 .inputField {
   width: 100%;

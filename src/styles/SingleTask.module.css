@@ -66,7 +66,7 @@
 
 .popupEditingBox {
   position: fixed;
-  width: 80dvw;
+  width: 900px;
   height: 90dvh;
   top: 50%;
   left: 50%;
@@ -82,16 +82,17 @@
   color: var(--title-text-color);
   height: 100%;
   resize: none;
-  padding: 10px;
+  padding: 10px 20px;
   border: 5px solid var(--secondary-white-color);
   border-style: center;
   border-radius: 7px;
   line-height: 25px;
   color: #ffffffb7;
-  font-size: 16px;
+  font-size: 18px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.699);
   scrollbar-width: none;
   -ms-overflow-style: none;
+  line-height: 32px;
 }
 
 /*markdown*/
@@ -108,7 +109,6 @@
 .markdown_content h5,
 .markdown_content h6 {
   line-height: 0;
-  margin-bottom: -5px;
 }
 .markdown_content h4,
 .markdown_content h5,
@@ -157,8 +157,9 @@
 
 .ReadNote {
   position: absolute;
-  width: calc(100dvw - 400px);
-  height: 90dvh;
+  width: 94dvw;
+  margin: 0 auto;
+  height: 97dvh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -166,20 +167,27 @@
   z-index: 9999;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
-  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.322);
 }
 .ReadNote p {
   font-size: 18px;
-  line-height: 32px;
+  line-height: 30px;
 }
 .ReadNote .notes {
-  padding: 0 20px;
-  width: 100%;
+  width: 800px;
   margin-top: 37px;
   padding-top: 15px;
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.ReadNote .notes h1,
+.ReadNote .notes h2,
+.ReadNote .notes h3,
+.ReadNote .notes h4,
+.ReadNote .notes h5 {
+  margin-bottom: 10px;
 }
 
 .ReadNote .taskcontrolBar {
