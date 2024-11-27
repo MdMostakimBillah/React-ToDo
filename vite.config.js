@@ -28,8 +28,8 @@ const manifestForPlugin = {
     theme_color: "#272d39",
     background_color: "#272d39",
     display: "standalone",
-    scope: "/",
-    start_url: "/",
+    scope: ".",
+    start_url: ".",
     orientation: "portrait",
   },
 };
