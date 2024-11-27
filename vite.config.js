@@ -41,6 +41,7 @@ const manifestForPlugin = {
 // });
 
 export default defineConfig({
+  base: "/React-ToDo/",
   plugins: [
     react(),
     VitePWA({
@@ -50,5 +51,4 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/React-ToDo/",
 });
