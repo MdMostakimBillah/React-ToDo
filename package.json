@@ -7,10 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "redeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "redeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "dompurify": "^3.2.1",
