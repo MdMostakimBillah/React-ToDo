@@ -142,9 +142,13 @@
 
 .markdown_content code {
   background: #272d39;
-  padding: 2px 4px;
+  /* padding: 2px 4px; */
   border-radius: 3px;
-  /* padding: 5px; */
+  padding: 5px 7px;
+  display: flex;
+  text-align: end;
+  justify-content: end;
+  line-height: 32px;
 }
 .markdown_content img {
   width: 100%;

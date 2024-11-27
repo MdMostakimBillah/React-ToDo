@@ -79,7 +79,7 @@
   height: 100%;
   margin: 0 auto;
   background-color: var(--secondary-white-color);
-  border: 2px solid #767981;
+  border: 1px solid #767981;
   border-radius: 7px;
   overflow: hidden;
 }
