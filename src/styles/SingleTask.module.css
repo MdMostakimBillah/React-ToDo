@@ -190,6 +190,11 @@
   background-color: #272d39;
   border: 1px solid rgba(128, 128, 128, 0.384);
 }
+.ReadNote code,
+.ReadNote blockquote {
+  background-color: #2e3440;
+}
+/*  */
 .ReadNote .taskcontrolBar {
   background-color: #2e3440;
 }
