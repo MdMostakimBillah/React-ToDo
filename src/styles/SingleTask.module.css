@@ -11,12 +11,12 @@
 }
 @media (max-width: 1023px) {
   .singleTask {
-    width: calc((100dvw / 3) - 35px);
+    width: calc((100dvw / 2) - 50px);
   }
 }
 @media (max-width: 767px) {
   .singleTask {
-    width: calc((100dvw / 2) - 50px);
+    width: calc(100dvw - 31px);
   }
 }
 .taskcontrolBar {
@@ -67,11 +67,17 @@
 .popupEditingBox {
   position: fixed;
   width: 900px;
-  height: 90dvh;
+  height: 80dvh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
+}
+@media (max-width: 900px) {
+  .popupEditingBox {
+    width: 95dvw;
+    margin: 0 auto;
+  }
 }
 
 .TaskEditor textarea {
@@ -99,16 +105,13 @@
 .markdown_content {
   padding: 10px;
 }
-.markdown_content h1 {
-  /* margin-top: 10px; */
-}
 .markdown_content h1,
 .markdown_content h2,
 .markdown_content h3,
 .markdown_content h4,
 .markdown_content h5,
 .markdown_content h6 {
-  line-height: 0;
+  line-height: 1;
 }
 .markdown_content h4,
 .markdown_content h5,
@@ -116,7 +119,7 @@
   margin-bottom: -10px;
 }
 .markdown_content blockquote {
-  padding-left: 10px;
+  padding: 0 10px;
   border-left: 2px solid #969696;
   background: #272d39;
   height: 100%;
@@ -161,7 +164,7 @@
 
 .ReadNote {
   position: absolute;
-  width: 94dvw;
+  width: 97dvw;
   margin: 0 auto;
   height: 97dvh;
   top: 50%;
@@ -171,6 +174,16 @@
   z-index: 9999;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+@media (max-width: 767px) {
+  .ReadNote {
+    width: 97dvw;
+    margin: 0 auto;
+  }
+  .markdown_content p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
 }
 .ReadNote p {
   font-size: 18px;
@@ -185,6 +198,19 @@
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   padding-left: 50px;
   padding-right: 50px;
+}
+@media (max-width: 800px) {
+  .ReadNote .notes {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .ReadNote .notes {
+    margin-top: 25px;
+  }
 }
 .ReadNote .notes h1,
 .ReadNote .notes h2,

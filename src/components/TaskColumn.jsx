@@ -16,7 +16,7 @@ const TaskColumn = ({
       {/* <h3>{status}</h3> */}
       {/* </div> */}
       <div className={classes.taskesWraper}>
-        <Masonry columns={{ 640: 2, 768: 3, 1024: 4 }} gap={10}>
+        <Masonry columns={{ 640: 1, 768: 2, 1024: 4 }} gap={10}>
           {sectorData.map((item) =>
             item.value === getSelectedDataFromLocalStorage.value
               ? item.allChildTasks.map((task, i) => (

@@ -7,7 +7,12 @@
   position: relative;
   width: calc(100% - 58px);
 }
-
+@media (max-width: 767px) {
+  .WraperListOperation {
+    width: 100%;
+    margin-left: 5px;
+  }
+}
 .TaskList {
   border-radius: 5px;
   height: 100%;
@@ -117,7 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 25%;
+  width: 300px;
   border-left: 1px solid #767981;
   color: var(--title-text-color);
   padding: 5px 15px;
