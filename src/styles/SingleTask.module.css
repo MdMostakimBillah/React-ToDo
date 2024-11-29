@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+
 .singleTask {
   display: flex;
   justify-content: space-between;
@@ -99,9 +101,17 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   line-height: 32px;
+  font-family: "Hind Siliguri", serif;
 }
 
 /*markdown*/
+.markdown_content p,
+.markdown_content a,
+.markdown_content b,
+.markdown_content code,
+.markdown_content strong {
+  font-family: "Hind Siliguri", serif;
+}
 .markdown_content {
   padding: 10px;
 }
@@ -112,6 +122,7 @@
 .markdown_content h5,
 .markdown_content h6 {
   line-height: 1;
+  font-family: "Hind Siliguri", serif;
 }
 .markdown_content h4,
 .markdown_content h5,
@@ -152,6 +163,7 @@
   text-align: end;
   justify-content: end;
   line-height: 32px;
+  font-family: "Hind Siliguri", serif;
 }
 .markdown_content img {
   width: 100%;
@@ -160,6 +172,7 @@
 }
 .markdown_content a {
   color: aqua;
+  font-family: "Hind Siliguri", serif;
 }
 
 .ReadNote {
