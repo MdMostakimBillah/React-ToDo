@@ -137,8 +137,6 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* .markdown_content p {
-} */
 
 .markdown_content ul,
 .markdown_content ol {
@@ -216,8 +214,8 @@
   .ReadNote .notes {
     width: 100%;
     margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media (max-width: 767px) {
