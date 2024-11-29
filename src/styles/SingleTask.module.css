@@ -109,7 +109,8 @@
 .markdown_content a,
 .markdown_content b,
 .markdown_content code,
-.markdown_content strong {
+.markdown_content strong,
+.markdown_content em {
   font-family: "Hind Siliguri", serif;
 }
 .markdown_content {
@@ -185,6 +186,12 @@
   z-index: 9999;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* background: #13171f; */
+  background-color: #272d39;
+  border: 1px solid rgba(128, 128, 128, 0.384);
+}
+.ReadNote .taskcontrolBar {
+  background-color: #2e3440;
 }
 @media (max-width: 767px) {
   .ReadNote {
