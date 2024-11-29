@@ -92,12 +92,23 @@ const SingleTask = ({
             </span>
           )}
 
-          <span
+          {readNote ? (
+            ""
+          ) : (
+            <span
+              className="material-symbols-outlined"
+              onClick={deleteTaskHandler}
+            >
+              close
+            </span>
+          )}
+
+          {/* <span
             className="material-symbols-outlined"
             onClick={deleteTaskHandler}
           >
             close
-          </span>
+          </span> */}
         </div>
       </div>
       <div
