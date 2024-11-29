@@ -7,7 +7,6 @@ const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
   const [newName, setNewName] = useState("");
   const boxRef = useRef(null);
 
-
   //when click anywhere edit and delete button should be hide
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -92,10 +91,12 @@ const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
     // console.log(seletData);
   };
 
+  // const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className={classes.listSectorWraper}>
       <ul>
-        {/*this map for displying all item in nav*/}
+        {/* Displaying all items in nav */}
         {sectorList.map((item, index) => (
           <li key={index} value={item.value}>
             <span
@@ -103,11 +104,10 @@ const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
               onClick={() => EditDeleteHandler(index)}
             >
               density_medium
-            </span>{" "}
-            {/*Editing here*/}
+            </span>
+            {/* Editing here */}
             {index === editingIndex ? (
               <form
-                action=""
                 onSubmit={(e) => {
                   e.preventDefault();
                   saveEdit(index);
@@ -124,7 +124,10 @@ const ListSector = ({ sectorList, setSectorList, recivedSelectedSector }) => {
                 />
               </form>
             ) : (
-              <p onClick={() => selectSector(item, index)}>{item.value}</p>
+              <p onClick={() => selectSector(item, index)}>
+                {item.value.slice(0, 30)}
+                {item.value.length > 30 && "..."}
+              </p>
             )}
             <div
               ref={boxRef}
