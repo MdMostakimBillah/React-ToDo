@@ -155,30 +155,19 @@
   font-size: 15px;
 }
 
-/* .deleteSmallBox {
-  width: 50px;
-  height: 50px;
+/* .AllTaskTools {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: var(--secondary-white-color);
-  transition: all 0.3s ease-in-out;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
 }
-.deleteSmallBox span {
-  font-size: 25px;
-  color: var(--title-text-color);
-  user-select: none;
-  transition: all 0.3s ease-in-out;
-}
-.deleteSmallBox:hover {
-  width: 150px;
-  height: 150px;
-}
-.deleteSmallBox:hover span {
-  font-size: 80px;
+.AllTaskTools select {
+  width: 100%;
+  background-color: #272d39;
+  padding: 15px 10px;
+  border: 1px solid rgba(221, 221, 221, 0.315);
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 0px 5px 5px #00000018;
 } */

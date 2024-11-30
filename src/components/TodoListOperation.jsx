@@ -2,7 +2,6 @@ import { useState } from "react";
 import classes from "../styles/TodoListOperation.module.css";
 import TaskColumn from "./TaskColumn";
 const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
-
   const [activeCard, setActiveCard] = useState(null);
 
   const [inputNote, setInputNote] = useState(false);
@@ -162,8 +161,13 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
       </div>
 
       {/* delete box */}
-      {/* <div className={classes.deleteSmallBox}>
-        <span className="material-symbols-outlined">delete</span>
+      {/* <div className={classes.AllTaskTools}>
+        <select name="" id="">
+          <option value="">Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</option>
+          <option value="">B</option>
+          <option value="">C</option>
+          <option value="">D</option>
+        </select>
       </div> */}
     </>
   );
