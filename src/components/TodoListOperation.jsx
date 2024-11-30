@@ -147,20 +147,19 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
                   ""
                 )}
 
-                <div className={classes.selectedSection}>
+                {/* <div className={classes.selectedSection}>
                   <p>
                     {selectedDataFilter && getSelectedDataFromLocalStorage.value
                       ? getSelectedDataFromLocalStorage.value
                       : "No Sector Selected"}
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </form>
         </div>
       </div>
 
-      {/* delete box */}
       {/* <div className={classes.AllTaskTools}>
         <select name="" id="">
           <option value="">Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</option>
@@ -169,6 +168,13 @@ const TodoListOperation = ({ workingSector, sectorData, setSectorData }) => {
           <option value="">D</option>
         </select>
       </div> */}
+      <div className={classes.NoteTitleFullName}>
+        <p>
+          {selectedDataFilter && getSelectedDataFromLocalStorage.value
+            ? getSelectedDataFromLocalStorage.value
+            : "No Sector Selected"}
+        </p>
+      </div>
     </>
   );
 };

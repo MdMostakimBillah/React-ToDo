@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
 
 .WraperListOperation {
   height: auto;
@@ -125,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 300px;
+  /* width: 300px; */
   border-left: 1px solid #767981;
   color: var(--title-text-color);
   padding: 5px 15px;
@@ -171,3 +171,18 @@
   outline: none;
   box-shadow: 0px 0px 5px 5px #00000018;
 } */
+
+.NoteTitleFullName {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #272d39;
+  padding: 7px 15px;
+  border-radius: 5px;
+  border: 1px solid #767981;
+}
+.NoteTitleFullName p {
+  font-family: "Hind Siliguri", serif;
+  color: #fff;
+  user-select: none;
+}
